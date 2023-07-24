@@ -117,7 +117,7 @@ async def delete_duplicates(c: Bot, m: Message):
                             try:
                                 await c.USER.delete_messages(chat[id], message.id)
                             except FloodWait as e:
-                                await asyncio.sleep(e.x)
+                                await asyncio.sleep(e.value)
                             except Exception:
                                 pass
                             duplicates += 1
@@ -126,7 +126,7 @@ async def delete_duplicates(c: Bot, m: Message):
                                     Presets.DELETING_MSGS.format(duplicates, message.id)
                                 )
                             except FloodWait as e:
-                                await asyncio.sleep(e.x)
+                                await asyncio.sleep(e.value)  
                             except Exception:
                                 pass
                             await asyncio.sleep(delay)
