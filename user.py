@@ -1,5 +1,4 @@
 from os.path import exists
-
 from pyrogram import Client, enums
 
 if exists("./config.py"):
@@ -8,14 +7,14 @@ else:
     from sample_config import LOGGER, Config
 
 
-class User(Client):
+class User(Client, Config):
     def __init__(self):
         super().__init__(
-            Config.TG_USER_SESSION_NAME,
-            api_hash=Config.API_HASH,
-            api_id=Config.APP_ID,
+            "del-user", 
+            api_hash=self.API_HASH,
+            api_id=self.APP_ID,
             workers=8,
-            session_string=Config.TG_USER_SESSION_STRING
+            session_string=self.USER_SESSION
         )
         self.LOGGER = LOGGER
 
